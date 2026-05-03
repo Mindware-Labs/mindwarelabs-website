@@ -121,30 +121,6 @@ export default function HeroSection() {
                 <BrainCanvas />
               </div>
 
-              {/* HUD overlay — fixed red tracker on top of canvas */}
-              <div
-                className="absolute inset-0 z-20 pointer-events-none"
-                aria-hidden
-              >
-                {/* Tracking marker positioned over the upper-left lobe */}
-                <div
-                  className="absolute"
-                  style={{ left: "32%", top: "34%" }}
-                >
-                  <div className="relative w-10 h-10 -translate-x-1/2 -translate-y-1/2">
-                    {/* Corner brackets */}
-                    <span className="absolute top-0 left-0 w-2 h-2 border-l border-t border-red-500/85" />
-                    <span className="absolute top-0 right-0 w-2 h-2 border-r border-t border-red-500/85" />
-                    <span className="absolute bottom-0 left-0 w-2 h-2 border-l border-b border-red-500/85" />
-                    <span className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-red-500/85" />
-
-                    {/* Pulsing outer ring */}
-                    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 block w-3 h-3 rounded-full bg-red-500/40 animate-ping" />
-                    {/* Solid center dot */}
-                    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 block w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_12px_rgba(239,68,68,0.9)]" />
-                  </div>
-                </div>
-              </div>
             </div>
           </motion.div>
         </div>
