@@ -2,8 +2,13 @@
 
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+import dynamic from "next/dynamic";
 import { useLang } from "@/components/LangProvider";
+
+const BrainCanvas = dynamic(() => import("@/components/BrainCanvas"), {
+  ssr: false,
+  loading: () => null,
+});
 
 export default function HeroSection() {
   const { t } = useLang();
@@ -87,21 +92,60 @@ export default function HeroSection() {
             </motion.div>
           </div>
 
-          {/* Right: Logo — larger */}
+          {/* Right: 3D brain visualization with HUD overlay */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.7, delay: 0.2 }}
-            className="hidden md:flex items-center justify-center"
+            transition={{ duration: 0.9, delay: 0.25, ease: "easeOut" }}
+            className="hidden md:flex relative items-center justify-center"
           >
-            <Image
-              src="/images/logos/white_logo_transparent_background.png"
-              alt="Mindware Labs"
-              width={600}
-              height={207}
-              className="w-full max-w-lg opacity-90 drop-shadow-2xl"
-              priority
-            />
+            <div className="relative w-full aspect-square max-w-[560px]">
+              {/* Soft halo behind the brain */}
+              <div
+                className="absolute inset-10 rounded-full bg-[#AD74C3]/25 blur-3xl"
+                aria-hidden
+              />
+
+              {/* Faint concentric ring — engineering instrument vibe */}
+              <div
+                className="absolute inset-4 rounded-full border border-white/[0.07]"
+                aria-hidden
+              />
+              <div
+                className="absolute inset-16 rounded-full border border-white/[0.05]"
+                aria-hidden
+              />
+
+              {/* 3D Canvas */}
+              <div className="absolute inset-0 z-10">
+                <BrainCanvas />
+              </div>
+
+              {/* HUD overlay — fixed red tracker on top of canvas */}
+              <div
+                className="absolute inset-0 z-20 pointer-events-none"
+                aria-hidden
+              >
+                {/* Tracking marker positioned over the upper-left lobe */}
+                <div
+                  className="absolute"
+                  style={{ left: "32%", top: "34%" }}
+                >
+                  <div className="relative w-10 h-10 -translate-x-1/2 -translate-y-1/2">
+                    {/* Corner brackets */}
+                    <span className="absolute top-0 left-0 w-2 h-2 border-l border-t border-red-500/85" />
+                    <span className="absolute top-0 right-0 w-2 h-2 border-r border-t border-red-500/85" />
+                    <span className="absolute bottom-0 left-0 w-2 h-2 border-l border-b border-red-500/85" />
+                    <span className="absolute bottom-0 right-0 w-2 h-2 border-r border-b border-red-500/85" />
+
+                    {/* Pulsing outer ring */}
+                    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 block w-3 h-3 rounded-full bg-red-500/40 animate-ping" />
+                    {/* Solid center dot */}
+                    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 block w-1.5 h-1.5 rounded-full bg-red-500 shadow-[0_0_12px_rgba(239,68,68,0.9)]" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </div>

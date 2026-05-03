@@ -1,7 +1,11 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm run *)"
+      "Bash(npm run *)",
+      "Bash(npx plugins *)",
+      "Bash(npm install *)",
+      "PowerShell(New-Item -ItemType Directory -Force -Path public\\\\models)",
+      "PowerShell(Move-Item -Path public\\\\images\\\\brain.glb -Destination public\\\\models\\\\brain.glb -Force)"
     ]
   }
 }
