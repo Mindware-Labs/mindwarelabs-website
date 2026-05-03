@@ -100,9 +100,9 @@ export default function HeroSection() {
             className="hidden md:flex relative items-center justify-center"
           >
             <div className="relative w-full aspect-square max-w-[560px]">
-              {/* Soft halo behind the brain */}
+              {/* Soft halo behind the brain — extends slightly past the canvas to envelop the full silhouette */}
               <div
-                className="absolute inset-10 rounded-full bg-[#AD74C3]/25 blur-3xl"
+                className="absolute -inset-4 rounded-full bg-[#AD74C3]/30 blur-3xl"
                 aria-hidden
               />
 

@@ -8,8 +8,8 @@ import type { Group, Mesh } from "three";
 
 const MODEL_URL = "/models/brain.glb";
 
-// Target diameter (world units) after auto-fit. Camera at z=5 / fov 35 shows ~3.15 units; 3.0 fills most of view.
-const TARGET_SIZE = 3.0;
+// Target diameter (world units) after auto-fit. Camera at z=5 / fov 35 shows ~3.15 units; 2.6 leaves margin for asymmetric models.
+const TARGET_SIZE = 2.6;
 
 function BrainModelInner() {
   const groupRef = useRef<Group>(null);
