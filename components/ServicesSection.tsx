@@ -5,100 +5,71 @@ import { motion, useInView } from "framer-motion";
 import { Globe, LayoutGrid, Zap, Link2 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { useLang } from "@/components/LangProvider";
+import ServiceCard from "@/components/ServiceCard";
 
 const icons: LucideIcon[] = [Globe, LayoutGrid, Zap, Link2];
-const accents = ["#522566", "#7A3A8E", "#522566", "#7A3A8E"];
-
-function ServiceCard({
-  icon: Icon,
-  accent,
-  title,
-  problem,
-  solution,
-  theProblem,
-  ourApproach,
-  index,
-}: {
-  icon: LucideIcon;
-  accent: string;
-  title: string;
-  problem: string;
-  solution: string;
-  theProblem: string;
-  ourApproach: string;
-  index: number;
-}) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
-
-  return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 32 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="group bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-300 border border-[#EADFF0] hover:border-[#AD74C3]/40"
-    >
-      <div
-        className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
-        style={{ backgroundColor: accent + "12" }}
-      >
-        <Icon className="w-5 h-5" style={{ color: accent }} />
-      </div>
-
-      <h3 className="text-lg font-semibold text-gray-900 mb-4">{title}</h3>
-
-      <div className="space-y-3">
-        <div>
-          <span className="text-[9px] font-bold text-rose-400 uppercase tracking-widest">{theProblem}</span>
-          <p className="text-gray-400 text-sm mt-1 leading-relaxed">{problem}</p>
-        </div>
-        <div className="h-px bg-[#F0E6F7]" />
-        <div>
-          <span className="text-[9px] font-bold text-[#522566] uppercase tracking-widest">{ourApproach}</span>
-          <p className="text-gray-600 text-sm mt-1 leading-relaxed">{solution}</p>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
 
 export default function ServicesSection() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-60px" });
+  const inView = useInView(ref, { once: true, margin: "-80px" });
   const { t } = useLang();
   const s = t.services;
 
   return (
-    <section id="services" className="bg-[#F8EDFB] py-20 px-6">
-      <div className="max-w-7xl mx-auto">
+    <section
+      ref={ref}
+      id="services"
+      className="relative bg-gradient-to-b from-[#F8EDFB] to-[#F1E3F7] py-24 px-6 overflow-hidden"
+    >
+      {/* Ambient background shapes */}
+      <div
+        aria-hidden
+        className="absolute top-20 right-[-8rem] w-[28rem] h-[28rem] rounded-full bg-[#AD74C3]/12 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="absolute bottom-10 left-[-6rem] w-80 h-80 rounded-full bg-[#7A3A8E]/10 blur-3xl"
+      />
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#EADFF0] to-transparent"
+      />
+
+      <div className="relative max-w-7xl mx-auto">
+        {/* Header */}
         <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 24 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.45 }}
-          className="mb-12"
+          transition={{ duration: 0.5 }}
+          className="max-w-2xl mb-14 md:mb-16"
         >
-          <span className="text-xs font-bold text-[#AD74C3] uppercase tracking-widest">{s.eyebrow}</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-3 leading-tight">
-            {s.heading1}{" "}
-            <span className="text-[#522566]">{s.heading2}</span>
+          <span className="text-[11px] md:text-xs font-bold uppercase tracking-[0.22em] text-[#AD74C3]">
+            {s.eyebrow}
+          </span>
+          <h2 className="mt-4 text-3xl md:text-5xl font-bold tracking-tight leading-[1.08]">
+            <span className="text-[#1B0A24]">{s.heading1} </span>
+            <span className="bg-gradient-to-r from-[#AD74C3] to-[#7A3A8E] bg-clip-text text-transparent">
+              {s.heading2}
+            </span>
           </h2>
-          <p className="text-gray-400 text-base max-w-lg leading-relaxed">{s.sub}</p>
+          <p className="mt-5 text-base text-gray-500 max-w-md leading-relaxed">
+            {s.sub}
+          </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-5">
+        {/* Grid: 1 / 2 / 4 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
           {s.items.map((item, i) => (
             <ServiceCard
-              key={i}
-              icon={icons[i]}
-              accent={accents[i]}
+              key={item.title}
+              Icon={icons[i]}
               title={item.title}
               problem={item.problem}
               solution={item.solution}
               theProblem={s.theProblem}
               ourApproach={s.ourApproach}
               index={i}
+              inView={inView}
             />
           ))}
         </div>

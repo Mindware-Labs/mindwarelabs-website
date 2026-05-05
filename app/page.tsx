@@ -1,7 +1,8 @@
 import { LangProvider } from "@/components/LangProvider";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import TrustSection from "@/components/TrustSection";
+import MetricsSection from "@/components/MetricsSection";
+import TechStackRow from "@/components/TechStackRow";
 import ServicesSection from "@/components/ServicesSection";
 import ProcessSection from "@/components/ProcessSection";
 import ProjectsSection from "@/components/ProjectsSection";
@@ -14,7 +15,8 @@ export default function Home() {
       <main>
         <Navbar />
         <HeroSection />
-        <TrustSection />
+        <MetricsSection />
+        <TechStackRow />
         <ServicesSection />
         <ProcessSection />
         <ProjectsSection />

@@ -14,12 +14,16 @@ export const en = {
     ctaSecondary: "See What We Build",
   },
   trust: {
+    eyebrow: "Proven results across projects & industries",
+    heading1: "Trusted by Clients.",
+    heading2: "Driven by Results.",
     stats: [
       { value: "50+", label: "Projects Delivered" },
       { value: "8+", label: "Industries Served" },
       { value: "98%", label: "Client Satisfaction" },
       { value: "3×", label: "Faster to Market" },
     ],
+    gaugeCaption: "Our clients love working with us",
     builtWith: "Built with",
   },
   services: {
@@ -153,12 +157,16 @@ export const es: typeof en = {
     ctaSecondary: "Ver qué construimos",
   },
   trust: {
+    eyebrow: "Resultados comprobados en proyectos e industrias",
+    heading1: "Clientes que Confían.",
+    heading2: "Resultados que Hablan.",
     stats: [
       { value: "50+", label: "Proyectos Entregados" },
       { value: "8+", label: "Industrias Atendidas" },
       { value: "98%", label: "Satisfacción del Cliente" },
       { value: "3×", label: "Más Rápido al Mercado" },
     ],
+    gaugeCaption: "Nuestros clientes aman trabajar con nosotros",
     builtWith: "Construido con",
   },
   services: {
