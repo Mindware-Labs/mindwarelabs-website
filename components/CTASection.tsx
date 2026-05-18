@@ -13,8 +13,20 @@ export default function CTASection() {
   const c = t.cta;
 
   return (
-    <section id="contact" className="py-20 px-6 bg-[#F8EDFB]">
-      <div className="max-w-5xl mx-auto">
+    <section
+      id="contact"
+      className="relative py-24 px-6 overflow-hidden bg-linear-to-b from-[#F8EDFB] via-[#F8EDFB] to-[#F1E3F7]"
+    >
+      {/* Ambient blobs */}
+      <div
+        aria-hidden
+        className="absolute top-10 -left-24 w-72 h-72 rounded-full bg-[#AD74C3]/15 blur-3xl pointer-events-none"
+      />
+      <div
+        aria-hidden
+        className="absolute bottom-0 -right-24 w-80 h-80 rounded-full bg-[#7A3A8E]/10 blur-3xl pointer-events-none"
+      />
+      <div className="relative max-w-5xl mx-auto">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 32 }}

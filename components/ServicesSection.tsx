@@ -30,11 +30,6 @@ export default function ServicesSection() {
         aria-hidden
         className="absolute bottom-10 left-[-6rem] w-80 h-80 rounded-full bg-[#7A3A8E]/10 blur-3xl"
       />
-      <div
-        aria-hidden
-        className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#EADFF0] to-transparent"
-      />
-
       <div className="relative max-w-7xl mx-auto">
         {/* Header */}
         <motion.div

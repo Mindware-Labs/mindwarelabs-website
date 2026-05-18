@@ -16,8 +16,20 @@ export default function ProcessSection() {
   const p = t.process;
 
   return (
-    <section id="process" className="py-20 px-6 bg-white">
-      <div className="max-w-7xl mx-auto">
+    <section
+      id="process"
+      className="relative py-24 px-6 overflow-hidden bg-linear-to-b from-[#F1E3F7] via-[#F8EDFB] to-[#F8EDFB]"
+    >
+      {/* Ambient blobs */}
+      <div
+        aria-hidden
+        className="absolute top-10 -left-24 w-72 h-72 rounded-full bg-[#AD74C3]/15 blur-3xl pointer-events-none"
+      />
+      <div
+        aria-hidden
+        className="absolute bottom-0 -right-24 w-80 h-80 rounded-full bg-[#7A3A8E]/10 blur-3xl pointer-events-none"
+      />
+      <div className="relative max-w-7xl mx-auto">
         <motion.div
           ref={ref}
           initial={{ opacity: 0, y: 24 }}
@@ -26,11 +38,11 @@ export default function ProcessSection() {
           className="mb-14"
         >
           <span className="text-xs font-bold text-[#AD74C3] uppercase tracking-widest">{p.eyebrow}</span>
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mt-2 mb-3 leading-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#1B0A24] mt-2 mb-3 leading-tight">
             {p.heading1}{" "}
             <span className="text-[#522566]">{p.heading2}</span>
           </h2>
-          <p className="text-gray-400 text-base max-w-lg">{p.sub}</p>
+          <p className="text-gray-500 text-base max-w-lg">{p.sub}</p>
         </motion.div>
 
         <div className="relative">
@@ -51,8 +63,8 @@ export default function ProcessSection() {
                     <Icon className="w-6 h-6 text-[#522566] mb-1" />
                     <span className="text-[10px] font-bold text-[#AD74C3] tracking-widest">{numbers[i]}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-3">{step.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{step.description}</p>
+                  <h3 className="text-lg font-bold text-[#1B0A24] mb-3">{step.title}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{step.description}</p>
                 </motion.div>
               );
             })}
